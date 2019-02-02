@@ -1,0 +1,344 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "hr-HR",
+    "dataSources": [
+      {
+        "name": "SqlServer localhost ComputerStore",
+        "connectionString": "Provider=SQLNCLI11;Data Source=.;Initial Catalog=ComputerStore;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      },
+      {
+        "name": "SqlServer localhost ComputerStore 2",
+        "connectionString": "Provider=SQLNCLI11;Data Source=.;Initial Catalog=ComputerStore;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Query",
+        "columns": [
+          {
+            "name": "GradLokacija",
+            "dataType": "string",
+            "sourceColumn": "GradLokacija",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "KantonLokacija",
+            "dataType": "string",
+            "sourceColumn": "KantonLokacija",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "NazivTrgovine",
+            "dataType": "string",
+            "sourceColumn": "NazivTrgovine",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "NazivProizvoda",
+            "dataType": "string",
+            "sourceColumn": "NazivProizvoda",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "CijenaProizvoda",
+            "dataType": "double",
+            "sourceColumn": "CijenaProizvoda",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "KupacNaziv",
+            "dataType": "string",
+            "sourceColumn": "KupacNaziv",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "ProdavacNaziv",
+            "dataType": "string",
+            "sourceColumn": "ProdavacNaziv",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "NazivSkladista",
+            "dataType": "string",
+            "sourceColumn": "NazivSkladista",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "NacinPLacanja",
+            "dataType": "string",
+            "sourceColumn": "NacinPLacanja",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "Kolicina",
+            "dataType": "int64",
+            "sourceColumn": "Kolicina",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Popust",
+            "dataType": "double",
+            "sourceColumn": "Popust",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "DatumKupovine",
+            "dataType": "string",
+            "sourceColumn": "DatumKupovine",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "type": "calculated",
+            "name": "Cijena * Kolicina",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "[Kolicina]*[CijenaProizvoda]"
+          },
+          {
+            "type": "calculated",
+            "name": "Sa obracunatim popustom",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "[Cijena * Kolicina]-([Cijena * Kolicina]*([Popust]/100))"
+          },
+          {
+            "type": "calculated",
+            "name": "Year",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "Year([DatumKupovine])"
+          },
+          {
+            "type": "calculated",
+            "name": "Month",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "MONTH([DatumKupovine])"
+          },
+          {
+            "type": "calculated",
+            "name": "Day",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "DAY([DatumKupovine])"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Query",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT   G.Naziv AS GradLokacija,",
+                "\t\t (SELECT KAN.Naziv  FROM Kantoni AS KAN WHERE KAN.KantonID = G.KantonID) AS KantonLokacija,\t",
+                "\t\t T.Naziv AS NazivTrgovine,",
+                "\t\t P.Naziv AS NazivProizvoda,",
+                "\t\t P.Cijena AS CijenaProizvoda,",
+                "\t\t (SELECT O.Ime + ' ' + O.Prezime  FROM Osobe as O WHERE OsobaID = K.KupacID) AS KupacNaziv,",
+                "\t\t (SELECT O.Ime + ' ' + O.Prezime  FROM Osobe as O WHERE OsobaID = PR.ProdavacID) AS ProdavacNaziv,",
+                "\t\t (SELECT Naziv  FROM Skladista as SKL WHERE SKL.SkladisteID = SP.SkladisteID) AS NazivSkladista,",
+                "\t\t NP.Naziv as NacinPLacanja,",
+                "\t\t SR.Kolicina AS Kolicina,",
+                "\t\t SR.Popust AS Popust,",
+                "\t\t Convert(varchar(10),CONVERT(date,R.DatumKupovine,106),103) AS DatumKupovine",
+                "\t  FROM Proizvodi AS P INNER JOIN SkladistaProizvodi as SP",
+                "\t  ON SP.ProizvodID = P.ProizvodID INNER JOIN StavkeRacuna as SR",
+                "\t  ON SR.ProizvodID = P.ProizvodID INNER JOIN Racuni AS R ",
+                "\t  ON SR.RacunID = R.RacunID INNER JOIN NaciniPlacanja as NP",
+                "\t  ON NP.NacinPlacanjaID = R.NacinPlacanjaID INNER JOIN Prodavaci AS PR",
+                "\t  ON PR.ProdavacID = R.ProdavacID INNER JOIN Kupci as K ON ",
+                "\t  K.KupacID = R.KupacID INNER JOIN Trgovine AS T ON T.TrgovinaID = PR.TrgovinaID",
+                "\t  INNER JOIN Gradovi as G ON G.GradID = T.GradID",
+                "\t  WHERE SR.Kolicina!=0"
+              ],
+              "dataSource": "SqlServer localhost ComputerStore 2"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   G.Naziv AS GradLokacija,",
+                  "\t\t (SELECT KAN.Naziv  FROM Kantoni AS KAN WHERE KAN.KantonID = G.KantonID) AS KantonLokacija,\t",
+                  "\t\t T.Naziv AS NazivTrgovine,",
+                  "\t\t P.Naziv AS NazivProizvoda,",
+                  "\t\t P.Cijena AS CijenaProizvoda,",
+                  "\t\t (SELECT O.Ime + ' ' + O.Prezime  FROM Osobe as O WHERE OsobaID = K.KupacID) AS KupacNaziv,",
+                  "\t\t (SELECT O.Ime + ' ' + O.Prezime  FROM Osobe as O WHERE OsobaID = PR.ProdavacID) AS ProdavacNaziv,",
+                  "\t\t (SELECT Naziv  FROM Skladista as SKL WHERE SKL.SkladisteID = SP.SkladisteID) AS NazivSkladista,",
+                  "\t\t NP.Naziv as NacinPLacanja,",
+                  "\t\t SR.Kolicina AS Kolicina,",
+                  "\t\t SR.Popust AS Popust,",
+                  "\t\t Convert(varchar(10),CONVERT(date,R.DatumKupovine,106),103) AS DatumKupovine",
+                  "\t  FROM Proizvodi AS P INNER JOIN SkladistaProizvodi as SP",
+                  "\t  ON SP.ProizvodID = P.ProizvodID INNER JOIN StavkeRacuna as SR",
+                  "\t  ON SR.ProizvodID = P.ProizvodID INNER JOIN Racuni AS R ",
+                  "\t  ON SR.RacunID = R.RacunID INNER JOIN NaciniPlacanja as NP",
+                  "\t  ON NP.NacinPlacanjaID = R.NacinPlacanjaID INNER JOIN Prodavaci AS PR",
+                  "\t  ON PR.ProdavacID = R.ProdavacID INNER JOIN Kupci as K ON ",
+                  "\t  K.KupacID = R.KupacID INNER JOIN Trgovine AS T ON T.TrgovinaID = PR.TrgovinaID",
+                  "\t  INNER JOIN Gradovi as G ON G.GradID = T.GradID",
+                  "\t  WHERE SR.Kolicina!=0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Zarada",
+            "expression": " SUM([Cijena * Kolicina])",
+            "kpi": {
+              "targetExpression": "'Query'[ProizvodaProdano]",
+              "statusGraphic": "Shapes",
+              "statusExpression": [
+                "var x='Query'[Zarada]/'Query'[_Zarada Goal] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.4,-1,",
+                "\t                If(x<0.8,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "40"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "80"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ZaradaSaPopustom",
+            "expression": "SUM([Sa obracunatim popustom])"
+          },
+          {
+            "name": "ProizvodaProdano",
+            "expression": "SUM([Kolicina])"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Hierarchy1",
+            "levels": [
+              {
+                "name": "GradLokacija",
+                "ordinal": 1,
+                "column": "GradLokacija"
+              },
+              {
+                "name": "KantonLokacija",
+                "ordinal": 0,
+                "column": "KantonLokacija"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT   G.Naziv AS GradLokacija,",
+              "\t\t (SELECT KAN.Naziv  FROM Kantoni AS KAN WHERE KAN.KantonID = G.KantonID) AS KantonLokacija,\t",
+              "\t\t T.Naziv AS NazivTrgovine,",
+              "\t\t P.Naziv AS NazivProizvoda,",
+              "\t\t P.Cijena AS CijenaProizvoda,",
+              "\t\t (SELECT O.Ime + ' ' + O.Prezime  FROM Osobe as O WHERE OsobaID = K.KupacID) AS KupacNaziv,",
+              "\t\t (SELECT O.Ime + ' ' + O.Prezime  FROM Osobe as O WHERE OsobaID = PR.ProdavacID) AS ProdavacNaziv,",
+              "\t\t (SELECT Naziv  FROM Skladista as SKL WHERE SKL.SkladisteID = SP.SkladisteID) AS NazivSkladista,",
+              "\t\t NP.Naziv as NacinPLacanja,",
+              "\t\t SR.Kolicina AS Kolicina,",
+              "\t\t SR.Popust AS Popust,",
+              "\t\t Convert(varchar(10),CONVERT(date,R.DatumKupovine,106),103) AS DatumKupovine",
+              "\t  FROM Proizvodi AS P INNER JOIN SkladistaProizvodi as SP",
+              "\t  ON SP.ProizvodID = P.ProizvodID INNER JOIN StavkeRacuna as SR",
+              "\t  ON SR.ProizvodID = P.ProizvodID INNER JOIN Racuni AS R ",
+              "\t  ON SR.RacunID = R.RacunID INNER JOIN NaciniPlacanja as NP",
+              "\t  ON NP.NacinPlacanjaID = R.NacinPlacanjaID INNER JOIN Prodavaci AS PR",
+              "\t  ON PR.ProdavacID = R.ProdavacID INNER JOIN Kupci as K ON ",
+              "\t  K.KupacID = R.KupacID INNER JOIN Trgovine AS T ON T.TrgovinaID = PR.TrgovinaID",
+              "\t  INNER JOIN Gradovi as G ON G.GradID = T.GradID",
+              "\t  WHERE SR.Kolicina!=0"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Query"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   G.Naziv AS GradLokacija,",
+              "\t\t (SELECT KAN.Naziv  FROM Kantoni AS KAN WHERE KAN.KantonID = G.KantonID) AS KantonLokacija,\t",
+              "\t\t T.Naziv AS NazivTrgovine,",
+              "\t\t P.Naziv AS NazivProizvoda,",
+              "\t\t P.Cijena AS CijenaProizvoda,",
+              "\t\t (SELECT O.Ime + ' ' + O.Prezime  FROM Osobe as O WHERE OsobaID = K.KupacID) AS KupacNaziv,",
+              "\t\t (SELECT O.Ime + ' ' + O.Prezime  FROM Osobe as O WHERE OsobaID = PR.ProdavacID) AS ProdavacNaziv,",
+              "\t\t (SELECT Naziv  FROM Skladista as SKL WHERE SKL.SkladisteID = SP.SkladisteID) AS NazivSkladista,",
+              "\t\t NP.Naziv as NacinPLacanja,",
+              "\t\t SR.Kolicina AS Kolicina,",
+              "\t\t SR.Popust AS Popust,",
+              "\t\t Convert(varchar(10),CONVERT(date,R.DatumKupovine,106),103) AS DatumKupovine",
+              "\t  FROM Proizvodi AS P INNER JOIN SkladistaProizvodi as SP",
+              "\t  ON SP.ProizvodID = P.ProizvodID INNER JOIN StavkeRacuna as SR",
+              "\t  ON SR.ProizvodID = P.ProizvodID INNER JOIN Racuni AS R ",
+              "\t  ON SR.RacunID = R.RacunID INNER JOIN NaciniPlacanja as NP",
+              "\t  ON NP.NacinPlacanjaID = R.NacinPlacanjaID INNER JOIN Prodavaci AS PR",
+              "\t  ON PR.ProdavacID = R.ProdavacID INNER JOIN Kupci as K ON ",
+              "\t  K.KupacID = R.KupacID INNER JOIN Trgovine AS T ON T.TrgovinaID = PR.TrgovinaID",
+              "\t  INNER JOIN Gradovi as G ON G.GradID = T.GradID",
+              "\t  WHERE SR.Kolicina!=0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

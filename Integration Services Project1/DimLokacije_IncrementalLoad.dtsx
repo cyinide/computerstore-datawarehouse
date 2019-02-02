@@ -1,0 +1,2211 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/24/2019 5:21:13 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="USER-HP"
+  DTS:CreatorName="user-HP\GuestUser"
+  DTS:DTSID="{FF50B530-C5E1-406B-B8B2-ADADCAB8B415}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="1050"
+  DTS:ObjectName="DimLokacije_IncrementalLoad"
+  DTS:PackageType="5"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{A573A6FE-DDB2-42F3-A8E4-C67985116532}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Delete record"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8F8BBB18-3244-4D5F-AA73-6016D870D3FB}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete record">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Delete record\Delete data from DW"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{EA90E4AB-58CD-429A-8E3E-09E16D09AFF6}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete data from DW"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Delete record\Delete data from DW\DW"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="DW"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimLokacije]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Delete record\Delete data from DW\DW.Connections[OleDbConnection]"
+                      connectionManagerID="{C1655061-8734-4D22-94A9-B001CDABBA70}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.DatawareHouse]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].ExternalColumns[LokacijaKey]"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaKey]"
+                          name="LokacijaKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaAltKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].ExternalColumns[LokacijaAltKey]"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaAltKey]"
+                          name="LokacijaAltKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[Grad]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].ExternalColumns[Grad]"
+                          length="100"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[Grad]"
+                          name="Grad"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[Kanton]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].ExternalColumns[Kanton]"
+                          length="100"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[Kanton]"
+                          name="Kanton"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].ExternalColumns[LokacijaKey]"
+                          dataType="i4"
+                          name="LokacijaKey" />
+                        <externalMetadataColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].ExternalColumns[LokacijaAltKey]"
+                          dataType="i4"
+                          name="LokacijaAltKey" />
+                        <externalMetadataColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].ExternalColumns[Grad]"
+                          dataType="wstr"
+                          length="100"
+                          name="Grad" />
+                        <externalMetadataColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].ExternalColumns[Kanton]"
+                          dataType="wstr"
+                          length="100"
+                          name="Kanton" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[LokacijaKey]"
+                          dataType="i4"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[LokacijaKey]"
+                          name="LokacijaKey" />
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[LokacijaAltKey]"
+                          dataType="i4"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[LokacijaAltKey]"
+                          name="LokacijaAltKey" />
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[Grad]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[Grad]"
+                          name="Grad" />
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[Kanton]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[Kanton]"
+                          name="Kanton" />
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Delete record\Delete data from DW\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Gradovi]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Gradovi]) [refTable]
+where [refTable].[GradID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="GradID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="KantonID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Naziv" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaAltKey]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Delete record\Delete data from DW\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="{8251388F-84AF-4487-880C-9DB1AEACD342}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[USER-HP.ComputerStore]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Delete record\Delete data from DW\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Delete record\Delete data from DW\Lookup.Inputs[Lookup Input].Columns[LokacijaAltKey]"
+                          cachedDataType="i4"
+                          cachedName="LokacijaAltKey"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaAltKey]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">GradID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Delete record\Delete data from DW\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Delete record\Delete data from DW\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\Lookup.Outputs[Lookup Match Output].Columns[GradID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Delete record\Delete data from DW\Lookup.Outputs[Lookup Match Output].Columns[GradID]"
+                          name="GradID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">GradID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Delete record\Delete data from DW\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Delete record\Delete data from DW\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Delete record\Delete data from DW\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Delete record\Delete data from DW\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Delete record\Delete data from DW\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Delete record\Delete data from DW\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Delete record\Delete data from DW\OLE DB Command"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="OLE DB Command"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DELETE FROM DimLokacije WHERE LokacijaAltKey = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Delete record\Delete data from DW\OLE DB Command.Connections[OleDbConnection]"
+                      connectionManagerID="{C1655061-8734-4D22-94A9-B001CDABBA70}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.DatawareHouse]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Delete record\Delete data from DW\OLE DB Command.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Delete record\Delete data from DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[LokacijaAltKey]"
+                          cachedDataType="i4"
+                          cachedName="LokacijaAltKey"
+                          externalMetadataColumnId="Package\Delete record\Delete data from DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaAltKey]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Delete record\Delete data from DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="i4"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Delete record\Delete data from DW\OLE DB Command.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Delete record\Delete data from DW\OLE DB Command.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Delete record\Delete data from DW\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Delete record\Delete data from DW\OLE DB Command.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Delete record\Delete data from DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Delete record\Delete data from DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Delete record\Delete data from DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Delete record\Delete data from DW.Paths[Lookup No Match Output]"
+                  endId="Package\Delete record\Delete data from DW\OLE DB Command.Inputs[OLE DB Command Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\Delete record\Delete data from DW\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\Delete record\Delete data from DW.Paths[OLE DB Source Output]"
+                  endId="Package\Delete record\Delete data from DW\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Delete record\Delete data from DW\DW.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Insert_update record"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{BA6993D8-1E1C-4051-94C0-B38638D7253B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insert_update record">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Insert_update record\Update and insert data in DW"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E9DE881C-8E78-40B6-86AE-4E9A3B271C31}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update and insert data in DW"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Insert_update record\Update and insert data in DW\Conditional Split"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Conditional Split"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input].Columns[GradDB]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="GradDB"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradDB]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input].Columns[GradDW]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="GradDW"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradDW]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input].Columns[KantonDW]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="KantonDW"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[KantonDW]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input].Columns[KantonDB]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="KantonDB"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[KantonDB]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input].Columns[LokacijaAltKey]"
+                          cachedDataType="i4"
+                          cachedName="LokacijaAltKey"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[LokacijaAltKey]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Outputs[New record inserted]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="New record inserted"
+                      synchronousInputId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">[ISNULL](#{Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[LokacijaAltKey]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(LokacijaAltKey)</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Outputs[Existing record updated]"
+                      description="Output 2 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Existing record updated"
+                      synchronousInputId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradDB]} != #{Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradDW]} || #{Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[KantonDB]} != #{Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[KantonDW]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">GradDB != GradDW || KantonDB != KantonDW</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">1</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Insert_update record\Update and insert data in DW\DB"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="DB"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 0 AS GradID , 'Unknown' as Grad, 'Unknown' as Kanton
+  UNION
+  SELECT G.GradID,
+  G.Naziv,
+  k.Naziv 
+  from Gradovi as G INNER JOIN Kantoni AS K
+  ON G.KantonID=K.KantonID</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Insert_update record\Update and insert data in DW\DB.Connections[OleDbConnection]"
+                      connectionManagerID="{8251388F-84AF-4487-880C-9DB1AEACD342}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[USER-HP.ComputerStore]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[GradID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].ExternalColumns[GradID]"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[GradID]"
+                          name="GradID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[Grad]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].ExternalColumns[Grad]"
+                          length="60"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[Grad]"
+                          name="Grad"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[Kanton]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].ExternalColumns[Kanton]"
+                          length="60"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[Kanton]"
+                          name="Kanton"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].ExternalColumns[GradID]"
+                          dataType="i4"
+                          name="GradID" />
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].ExternalColumns[Grad]"
+                          dataType="wstr"
+                          length="60"
+                          name="Grad" />
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].ExternalColumns[Kanton]"
+                          dataType="wstr"
+                          length="60"
+                          name="Kanton" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output].Columns[GradID]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output].Columns[GradID]"
+                          name="GradID" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output].Columns[Grad]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output].Columns[Grad]"
+                          name="Grad" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output].Columns[Kanton]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output].Columns[Kanton]"
+                          name="Kanton" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Insert_update record\Update and insert data in DW\DW"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="DW"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimLokacije]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Insert_update record\Update and insert data in DW\DW.Connections[OleDbConnection]"
+                      connectionManagerID="{C1655061-8734-4D22-94A9-B001CDABBA70}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.DatawareHouse]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].ExternalColumns[LokacijaKey]"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaKey]"
+                          name="LokacijaKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaAltKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].ExternalColumns[LokacijaAltKey]"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaAltKey]"
+                          name="LokacijaAltKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[Grad]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].ExternalColumns[Grad]"
+                          length="100"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[Grad]"
+                          name="Grad"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[Kanton]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].ExternalColumns[Kanton]"
+                          length="100"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[Kanton]"
+                          name="Kanton"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].ExternalColumns[LokacijaKey]"
+                          dataType="i4"
+                          name="LokacijaKey" />
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].ExternalColumns[LokacijaAltKey]"
+                          dataType="i4"
+                          name="LokacijaAltKey" />
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].ExternalColumns[Grad]"
+                          dataType="wstr"
+                          length="100"
+                          name="Grad" />
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].ExternalColumns[Kanton]"
+                          dataType="wstr"
+                          length="100"
+                          name="Kanton" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[LokacijaKey]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[LokacijaKey]"
+                          name="LokacijaKey" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[LokacijaAltKey]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[LokacijaAltKey]"
+                          name="LokacijaAltKey" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[Grad]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[Grad]"
+                          name="Grad" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[Kanton]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[Kanton]"
+                          name="Kanton" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Insert_update record\Update and insert data in DW\Insert new record"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Insert new record"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimLokacije]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Connections[OleDbConnection]"
+                      connectionManagerID="{C1655061-8734-4D22-94A9-B001CDABBA70}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.DatawareHouse]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input].Columns[GradDB]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="GradDB"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input].ExternalColumns[Grad]"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradDB]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input].Columns[KantonDB]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="KantonDB"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input].ExternalColumns[Kanton]"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[KantonDB]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input].Columns[GradID]"
+                          cachedDataType="i4"
+                          cachedName="GradID"
+                          cachedSortKeyPosition="1"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input].ExternalColumns[LokacijaAltKey]"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input].ExternalColumns[LokacijaKey]"
+                          dataType="i4"
+                          name="LokacijaKey" />
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input].ExternalColumns[LokacijaAltKey]"
+                          dataType="i4"
+                          name="LokacijaAltKey" />
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input].ExternalColumns[Grad]"
+                          dataType="wstr"
+                          length="100"
+                          name="Grad" />
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input].ExternalColumns[Kanton]"
+                          dataType="wstr"
+                          length="100"
+                          name="Kanton" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Insert new record.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Insert new record.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Insert new record.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Insert_update record\Update and insert data in DW\Merge Join"
+                  componentClassID="Microsoft.MergeJoin"
+                  contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+                  name="Merge Join"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of join to perform."
+                      name="JoinType"
+                      typeConverter="JoinType">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the number of columns in the ordering key."
+                      name="NumKeyColumns">1</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the null values are treated as equal values."
+                      name="TreatNullsAsEqual">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Indicates the requested maximum buffers per input before blocking."
+                      name="MaxBuffersPerInput">5</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Left Input]"
+                      hasSideEffects="true"
+                      name="Merge Join Left Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Left Input].Columns[GradID]"
+                          cachedDataType="i4"
+                          cachedName="GradID"
+                          cachedSortKeyPosition="1"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output].Columns[GradID]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Left Input].Columns[Grad]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="Grad"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output].Columns[Grad]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Left Input].Columns[Kanton]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="Kanton"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output].Columns[Kanton]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Right Input]"
+                      hasSideEffects="true"
+                      name="Merge Join Right Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Right Input].Columns[LokacijaAltKey]"
+                          cachedDataType="i4"
+                          cachedName="LokacijaAltKey"
+                          cachedSortKeyPosition="1"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[LokacijaAltKey]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Right Input].Columns[Grad]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Grad"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[Grad]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Right Input].Columns[Kanton]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Kanton"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[Kanton]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output]"
+                      isSorted="true"
+                      name="Merge Join Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradID]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradID]"
+                          name="GradID"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Left Input].Columns[GradID]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradDB]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradDB]"
+                          name="GradDB">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Left Input].Columns[Grad]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradDW]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradDW]"
+                          name="GradDW">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Right Input].Columns[Grad]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[KantonDW]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[KantonDW]"
+                          name="KantonDW">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Right Input].Columns[Kanton]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[KantonDB]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[KantonDB]"
+                          name="KantonDB">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Left Input].Columns[Kanton]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[LokacijaAltKey]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[LokacijaAltKey]"
+                          name="LokacijaAltKey">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Right Input].Columns[LokacijaAltKey]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Insert_update record\Update and insert data in DW\Sort"
+                  componentClassID="Microsoft.Sort"
+                  contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+                  name="Sort"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                      name="EliminateDuplicates">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of threads to use for sorting."
+                      expressionType="Notify"
+                      name="MaximumThreads">-1</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Insert_update record\Update and insert data in DW\Sort.Inputs[Sort Input]"
+                      name="Sort Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort.Inputs[Sort Input].Columns[GradID]"
+                          cachedDataType="i4"
+                          cachedName="GradID"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[GradID]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort.Inputs[Sort Input].Columns[Grad]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="Grad"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[Grad]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort.Inputs[Sort Input].Columns[Kanton]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="Kanton"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[Kanton]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output]"
+                      isSorted="true"
+                      name="Sort Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output].Columns[GradID]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output].Columns[GradID]"
+                          name="GradID"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[GradID]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output].Columns[Grad]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output].Columns[Grad]"
+                          name="Grad">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[Grad]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output].Columns[Kanton]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output].Columns[Kanton]"
+                          name="Kanton">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output].Columns[Kanton]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Insert_update record\Update and insert data in DW\Sort 1"
+                  componentClassID="Microsoft.Sort"
+                  contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+                  name="Sort 1"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                      name="EliminateDuplicates">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of threads to use for sorting."
+                      expressionType="Notify"
+                      name="MaximumThreads">-1</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Insert_update record\Update and insert data in DW\Sort 1.Inputs[Sort Input]"
+                      name="Sort Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort 1.Inputs[Sort Input].Columns[LokacijaKey]"
+                          cachedDataType="i4"
+                          cachedName="LokacijaKey"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaKey]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort 1.Inputs[Sort Input].Columns[LokacijaAltKey]"
+                          cachedDataType="i4"
+                          cachedName="LokacijaAltKey"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaAltKey]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort 1.Inputs[Sort Input].Columns[Grad]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Grad"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[Grad]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort 1.Inputs[Sort Input].Columns[Kanton]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Kanton"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[Kanton]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output]"
+                      isSorted="true"
+                      name="Sort Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[LokacijaKey]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[LokacijaKey]"
+                          name="LokacijaKey">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaKey]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[LokacijaAltKey]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[LokacijaAltKey]"
+                          name="LokacijaAltKey"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[LokacijaAltKey]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[Grad]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[Grad]"
+                          name="Grad">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[Grad]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[Kanton]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output].Columns[Kanton]"
+                          name="Kanton">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output].Columns[Kanton]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Insert_update record\Update and insert data in DW\Update record"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="Update record"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE DimLokacije SET Grad = ? , Kanton = ? WHERE LokacijaAltKey = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Insert_update record\Update and insert data in DW\Update record.Connections[OleDbConnection]"
+                      connectionManagerID="{C1655061-8734-4D22-94A9-B001CDABBA70}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.DatawareHouse]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input].Columns[GradDB]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="GradDB"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradDB]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input].Columns[KantonDB]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="KantonDB"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[KantonDB]" />
+                        <inputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input].Columns[GradID]"
+                          cachedDataType="i4"
+                          cachedName="GradID"
+                          cachedSortKeyPosition="1"
+                          externalMetadataColumnId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output].Columns[GradID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="wstr"
+                          length="100"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="wstr"
+                          length="100"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          dataType="i4"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\Update record.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Insert_update record\Update and insert data in DW\Update record.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Update record.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Update record.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Insert_update record\Update and insert data in DW\Update record.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Insert_update record\Update and insert data in DW\Update record.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Insert_update record\Update and insert data in DW.Paths[Existing record updated]"
+                  endId="Package\Insert_update record\Update and insert data in DW\Update record.Inputs[OLE DB Command Input]"
+                  name="Existing record updated"
+                  startId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Outputs[Existing record updated]" />
+                <path
+                  refId="Package\Insert_update record\Update and insert data in DW.Paths[Merge Join Output]"
+                  endId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Inputs[Conditional Split Input]"
+                  name="Merge Join Output"
+                  startId="Package\Insert_update record\Update and insert data in DW\Merge Join.Outputs[Merge Join Output]" />
+                <path
+                  refId="Package\Insert_update record\Update and insert data in DW.Paths[New record inserted]"
+                  endId="Package\Insert_update record\Update and insert data in DW\Insert new record.Inputs[OLE DB Destination Input]"
+                  name="New record inserted"
+                  startId="Package\Insert_update record\Update and insert data in DW\Conditional Split.Outputs[New record inserted]" />
+                <path
+                  refId="Package\Insert_update record\Update and insert data in DW.Paths[OLE DB Source Output]"
+                  endId="Package\Insert_update record\Update and insert data in DW\Sort.Inputs[Sort Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Insert_update record\Update and insert data in DW\DB.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Insert_update record\Update and insert data in DW.Paths[OLE DB Source Output1]"
+                  endId="Package\Insert_update record\Update and insert data in DW\Sort 1.Inputs[Sort Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Insert_update record\Update and insert data in DW\DW.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Insert_update record\Update and insert data in DW.Paths[Sort Output]"
+                  endId="Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Left Input]"
+                  name="Sort Output"
+                  startId="Package\Insert_update record\Update and insert data in DW\Sort.Outputs[Sort Output]" />
+                <path
+                  refId="Package\Insert_update record\Update and insert data in DW.Paths[Sort Output1]"
+                  endId="Package\Insert_update record\Update and insert data in DW\Merge Join.Inputs[Merge Join Right Input]"
+                  name="Sort Output"
+                  startId="Package\Insert_update record\Update and insert data in DW\Sort 1.Outputs[Sort Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5C53D966-7E7A-4872-BE62-9A22CAC532CF}"
+      DTS:From="Package\Insert_update record"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Delete record" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Delete record\Delete data from DW"
+          TopLeft="46,28" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="275,125"
+          Size="275,168"
+          Id="Package\Delete record"
+          TopLeft="49,284" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Insert_update record\Update and insert data in DW"
+          TopLeft="26,32" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="268,114"
+          Size="268,157"
+          Id="Package\Insert_update record"
+          TopLeft="49,43" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="184.75,200">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84"
+              Start="0,0"
+              End="0,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Delete record\Delete data from DW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Delete record\Delete data from DW\OLE DB Command"
+          TopLeft="126,295" />
+        <NodeLayout
+          Size="96,42"
+          Id="Package\Delete record\Delete data from DW\DW"
+          TopLeft="151,46" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Delete record\Delete data from DW\Lookup"
+          TopLeft="147,141" />
+        <EdgeLayout
+          Id="Package\Delete record\Delete data from DW.Paths[OLE DB Source Output]"
+          TopLeft="201.25,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Delete record\Delete data from DW.Paths[Lookup No Match Output]"
+          TopLeft="206.25,183">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,112"
+              Start="0,0"
+              End="0,104.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,104.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,46.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Delete record\Delete data from DW\DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Insert_update record\Update and insert data in DW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Insert_update record\Update and insert data in DW\Insert new record"
+          TopLeft="429,396" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Insert_update record\Update and insert data in DW\Update record"
+          TopLeft="111,397" />
+        <NodeLayout
+          Size="96,42"
+          Id="Package\Insert_update record\Update and insert data in DW\DW"
+          TopLeft="482,54" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Insert_update record\Update and insert data in DW\Sort 1"
+          TopLeft="479,149" />
+        <NodeLayout
+          Size="93,42"
+          Id="Package\Insert_update record\Update and insert data in DW\DB"
+          TopLeft="116,51" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Insert_update record\Update and insert data in DW\Sort"
+          TopLeft="120,147" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Insert_update record\Update and insert data in DW\Conditional Split"
+          TopLeft="274,313" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Insert_update record\Update and insert data in DW\Merge Join"
+          TopLeft="283,222" />
+        <EdgeLayout
+          Id="Package\Insert_update record\Update and insert data in DW.Paths[Sort Output1]"
+          TopLeft="532.5,191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-184.166666666667,31"
+              Start="0,0"
+              End="-184.166666666667,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.3738601823708" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.3738601823708"
+                    Point2="0,15.3738601823708"
+                    Point3="-4,15.3738601823708" />
+                  <mssgle:LineSegment
+                    End="-180.166666666667,15.3738601823708" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-180.166666666667,15.3738601823708"
+                    Point2="-184.166666666667,15.3738601823708"
+                    Point3="-184.166666666667,19.3738601823708" />
+                  <mssgle:LineSegment
+                    End="-184.166666666667,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert_update record\Update and insert data in DW.Paths[Sort Output]"
+          TopLeft="169,189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179,33"
+              Start="0,0"
+              End="179,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="175,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175,16.5"
+                    Point2="179,16.5"
+                    Point3="179,20.5" />
+                  <mssgle:LineSegment
+                    End="179,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert_update record\Update and insert data in DW.Paths[OLE DB Source Output1]"
+          TopLeft="531.25,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert_update record\Update and insert data in DW.Paths[OLE DB Source Output]"
+          TopLeft="165.75,93">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert_update record\Update and insert data in DW.Paths[New record inserted]"
+          TopLeft="376,355">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="134.5,41"
+              Start="0,0"
+              End="134.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.6513409961686" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.6513409961686"
+                    Point2="0,16.6513409961686"
+                    Point3="4,16.6513409961686" />
+                  <mssgle:LineSegment
+                    End="130.5,16.6513409961686" />
+                  <mssgle:CubicBezierSegment
+                    Point1="130.5,16.6513409961686"
+                    Point2="134.5,16.6513409961686"
+                    Point3="134.5,20.6513409961686" />
+                  <mssgle:LineSegment
+                    End="134.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="22.47201171875,21.6513409961686,89.5559765625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert_update record\Update and insert data in DW.Paths[Merge Join Output]"
+          TopLeft="349.75,264">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert_update record\Update and insert data in DW.Paths[Existing record updated]"
+          TopLeft="327,355">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-143,42"
+              Start="0,0"
+              End="-143,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.0574712643678" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.0574712643678"
+                    Point2="0,17.0574712643678"
+                    Point3="-4,17.0574712643678" />
+                  <mssgle:LineSegment
+                    End="-139,17.0574712643678" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-139,17.0574712643678"
+                    Point2="-143,17.0574712643678"
+                    Point3="-143,21.0574712643678" />
+                  <mssgle:LineSegment
+                    End="-143,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.97798828125,22.0574712643678,104.9559765625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insert_update record\Update and insert data in DW\Insert new record">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insert_update record\Update and insert data in DW\DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insert_update record\Update and insert data in DW\DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Delete record\Delete data from DW\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Gradovi]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1915 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/24/2019 9:25:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="USER-HP"
+  DTS:CreatorName="user-HP\GuestUser"
+  DTS:DTSID="{70088FF7-63FE-4345-A074-B4915CD45ECD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="1050"
+  DTS:ObjectName="FactProdaja_Load"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{0F497C46-390C-465E-B1CF-94FB6558D749}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EAEA83AB-D6D7-44FE-B0C2-9383BD32A1F0}"
+      DTS:ObjectName="LocalHost.DatawareHouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DatawareHouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load data to FactProdaja"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{32A2BBE4-52E5-4842-B79F-35A0829C6937}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load data to FactProdaja"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load data to FactProdaja\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactProdaja]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to FactProdaja\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LokacijaKey]"
+                      cachedDataType="i4"
+                      cachedName="LokacijaKey"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LokacijaKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[LokacijaKey]" />
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TrgovinaKey]"
+                      cachedDataType="i4"
+                      cachedName="TrgovinaKey"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TrgovinaKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[TrgovinaKey]" />
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProizvodKey]"
+                      cachedDataType="i4"
+                      cachedName="ProizvodKey"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProizvodKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProizvodKey]" />
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KupacKey]"
+                      cachedDataType="i4"
+                      cachedName="KupacKey"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KupacKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[KupacKey]" />
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProdavacKey]"
+                      cachedDataType="i4"
+                      cachedName="ProdavacKey"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProdavacKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProdavacKey]" />
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SkladisteKey]"
+                      cachedDataType="i4"
+                      cachedName="SkladisteKey"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SkladisteKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[SkladisteKey]" />
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NacinPLacanja]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="NacinPLacanja"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NacinPlacanja]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[NacinPLacanja]" />
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Kolicina]"
+                      cachedDataType="i4"
+                      cachedName="Kolicina"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Kolicina]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[Kolicina]" />
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Zarada]"
+                      cachedDataType="numeric"
+                      cachedName="Zarada"
+                      cachedPrecision="29"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Zarada]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zarada]" />
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VrijemeKey]"
+                      cachedDataType="i4"
+                      cachedName="VrijemeKey"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VrijemeKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[VrijemeKey]" />
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ZaradaSaPopustom]"
+                      cachedDataType="numeric"
+                      cachedName="ZaradaSaPopustom"
+                      cachedPrecision="38"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ZaradaSaPopustom]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ZaradaSaPopustom]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProdajaKey]"
+                      dataType="i4"
+                      name="ProdajaKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LokacijaKey]"
+                      dataType="i4"
+                      name="LokacijaKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TrgovinaKey]"
+                      dataType="i4"
+                      name="TrgovinaKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProizvodKey]"
+                      dataType="i4"
+                      name="ProizvodKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KupacKey]"
+                      dataType="i4"
+                      name="KupacKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProdavacKey]"
+                      dataType="i4"
+                      name="ProdavacKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SkladisteKey]"
+                      dataType="i4"
+                      name="SkladisteKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NacinPlacanja]"
+                      dataType="wstr"
+                      length="100"
+                      name="NacinPlacanja" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Kolicina]"
+                      dataType="i8"
+                      name="Kolicina" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Zarada]"
+                      dataType="numeric"
+                      name="Zarada"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VrijemeKey]"
+                      dataType="wstr"
+                      length="20"
+                      name="VrijemeKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ZaradaSaPopustom]"
+                      dataType="numeric"
+                      name="ZaradaSaPopustom"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to FactProdaja\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to FactProdaja\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT ISNULL(G.GradID,0) AS LokacijaKey,
+		 T.TrgovinaID AS TrgovinaKey,
+		 P.ProizvodID AS ProizvodKey,
+		 R.KupacID AS KupacKey,
+		 R.ProdavacID AS ProdavacKey,
+		 SP.SkladisteID as SkladisteKey,
+		 NP.Naziv as NacinPLacanja,
+		 SR.Kolicina AS Kolicina,
+		 P.Cijena *  SR.Kolicina AS Zarada,
+		 ISNULL(YEAR(DatumKupovine) * 10000 + MONTH(DatumKupovine) * 100 + DAY(DatumKupovine),00010101) AS VrijemeKey,
+		  P.Cijena *  SR.Kolicina - (SR.Popust/100 * (P.Cijena * SR.Kolicina)) As ZaradaSaPopustom
+	  FROM Proizvodi AS P INNER JOIN SkladistaProizvodi as SP
+	  ON SP.ProizvodID = P.ProizvodID INNER JOIN StavkeRacuna as SR
+	  ON SR.ProizvodID = P.ProizvodID INNER JOIN Racuni AS R 
+	  ON SR.RacunID = R.RacunID INNER JOIN NaciniPlacanja as NP
+	  ON NP.NacinPlacanjaID = R.NacinPlacanjaID INNER JOIN Prodavaci AS PR
+	  ON PR.ProdavacID = R.ProdavacID INNER JOIN Kupci as K ON 
+	  K.KupacID = R.KupacID INNER JOIN Trgovine AS T ON T.TrgovinaID = PR.TrgovinaID
+	  INNER JOIN Gradovi as G ON G.GradID = T.GradID
+	  WHERE SR.Kolicina!=0</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to FactProdaja\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{8251388F-84AF-4487-880C-9DB1AEACD342}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[USER-HP.ComputerStore]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[LokacijaKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LokacijaKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[LokacijaKey]"
+                      name="LokacijaKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[TrgovinaKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TrgovinaKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[TrgovinaKey]"
+                      name="TrgovinaKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProizvodKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProizvodKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProizvodKey]"
+                      name="ProizvodKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[KupacKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KupacKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[KupacKey]"
+                      name="KupacKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProdavacKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProdavacKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProdavacKey]"
+                      name="ProdavacKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[SkladisteKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SkladisteKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[SkladisteKey]"
+                      name="SkladisteKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[NacinPLacanja]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NacinPLacanja]"
+                      length="100"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[NacinPLacanja]"
+                      name="NacinPLacanja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[Kolicina]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Kolicina]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[Kolicina]"
+                      name="Kolicina"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zarada]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Zarada]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zarada]"
+                      name="Zarada"
+                      precision="29"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[VrijemeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VrijemeKey]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[VrijemeKey]"
+                      name="VrijemeKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ZaradaSaPopustom]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ZaradaSaPopustom]"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ZaradaSaPopustom]"
+                      name="ZaradaSaPopustom"
+                      precision="38"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LokacijaKey]"
+                      dataType="i4"
+                      name="LokacijaKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TrgovinaKey]"
+                      dataType="i4"
+                      name="TrgovinaKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProizvodKey]"
+                      dataType="i4"
+                      name="ProizvodKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KupacKey]"
+                      dataType="i4"
+                      name="KupacKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProdavacKey]"
+                      dataType="i4"
+                      name="ProdavacKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SkladisteKey]"
+                      dataType="i4"
+                      name="SkladisteKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NacinPLacanja]"
+                      dataType="wstr"
+                      length="100"
+                      name="NacinPLacanja" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Kolicina]"
+                      dataType="i4"
+                      name="Kolicina" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Zarada]"
+                      dataType="numeric"
+                      name="Zarada"
+                      precision="29"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VrijemeKey]"
+                      dataType="i4"
+                      name="VrijemeKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ZaradaSaPopustom]"
+                      dataType="numeric"
+                      name="ZaradaSaPopustom"
+                      precision="38"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LokacijaKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LokacijaKey]"
+                      name="LokacijaKey" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TrgovinaKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TrgovinaKey]"
+                      name="TrgovinaKey" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProizvodKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProizvodKey]"
+                      name="ProizvodKey" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KupacKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KupacKey]"
+                      name="KupacKey" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProdavacKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProdavacKey]"
+                      name="ProdavacKey" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SkladisteKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SkladisteKey]"
+                      name="SkladisteKey" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NacinPLacanja]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NacinPLacanja]"
+                      name="NacinPLacanja" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Kolicina]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Kolicina]"
+                      name="Kolicina" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Zarada]"
+                      dataType="numeric"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Zarada]"
+                      name="Zarada"
+                      precision="29"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VrijemeKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VrijemeKey]"
+                      name="VrijemeKey" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ZaradaSaPopustom]"
+                      dataType="numeric"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ZaradaSaPopustom]"
+                      name="ZaradaSaPopustom"
+                      precision="38"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="return KupacKey instead of KupacAltKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimKupci]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimKupci]) [refTable]
+where [refTable].[KupacAltKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="KupacKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="KupacAltKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ImePrezime" dataType="DT_WSTR" length="102" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Spol" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VrstaKupca" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load data to FactProdaja\235:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Inputs[Lookup Input].Columns[KupacKey]"
+                      cachedDataType="i4"
+                      cachedName="KupacKey"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[KupacKey]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">KupacAltKey</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">KupacKey</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="return LokacijaKey instead of LokacijaAltKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimLokacije]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimLokacije]) [refTable]
+where [refTable].[LokacijaAltKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="LokacijaKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LokacijaAltKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Grad" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Kanton" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load data to FactProdaja\236:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Inputs[Lookup Input].Columns[LokacijaKey]"
+                      cachedDataType="i4"
+                      cachedName="LokacijaKey"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[LokacijaKey]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">LokacijaAltKey</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">LokacijaKey</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="return ProdavacKey instead of ProdavacAltKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimProdavaci]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimProdavaci]) [refTable]
+where [refTable].[ProdavacAltKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProdavacKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProdavacAltKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ImePrezime" dataType="DT_WSTR" length="102" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Spol" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DatumZaposlenja" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load data to FactProdaja\237:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Inputs[Lookup Input].Columns[ProdavacKey]"
+                      cachedDataType="i4"
+                      cachedName="ProdavacKey"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProdavacKey]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProdavacAltKey</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProdavacKey</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="return ProizvodKey based on ProizvodAltKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimProizvodi]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimProizvodi]) [refTable]
+where [refTable].[ProizvodAltKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProizvodKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProizvodAltKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Naziv" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Podkategorija" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Kategorija" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Proizvodjac" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StanjeProizvoda" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load data to FactProdaja\238:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Inputs[Lookup Input].Columns[ProizvodKey]"
+                      cachedDataType="i4"
+                      cachedName="ProizvodKey"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProizvodKey]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProizvodAltKey</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProizvodKey</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="return SkladisteKey based on SkladisteAltKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimSkladista]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimSkladista]) [refTable]
+where [refTable].[SkladisteAltKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SkladisteKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SkladisteAltKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Naziv" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Adresa" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load data to FactProdaja\239:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Inputs[Lookup Input].Columns[SkladisteKey]"
+                      cachedDataType="i4"
+                      cachedName="SkladisteKey"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[SkladisteKey]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SkladisteAltKey</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SkladisteKey</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="return TrgovinaKey based on TrgovinaAltKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimTrgovine]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimTrgovine]) [refTable]
+where [refTable].[TrgovinaAltKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TrgovinaKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TrgovinaAltKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Naziv" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Grad" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load data to FactProdaja\240:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Inputs[Lookup Input].Columns[TrgovinaKey]"
+                      cachedDataType="i4"
+                      cachedName="TrgovinaKey"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output].Columns[TrgovinaKey]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">TrgovinaAltKey</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">TrgovinaKey</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load data to FactProdaja.Paths[Lookup Match Output]"
+              endId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load data to FactProdaja.Paths[Lookup Match Output1]"
+              endId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load data to FactProdaja.Paths[Lookup Match Output2]"
+              endId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load data to FactProdaja.Paths[Lookup Match Output3]"
+              endId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load data to FactProdaja.Paths[Lookup Match Output4]"
+              endId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load data to FactProdaja.Paths[Lookup Match Output5]"
+              endId="Package\Load data to FactProdaja\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load data to FactProdaja.Paths[OLE DB Source Output]"
+              endId="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load data to FactProdaja\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Load data to FactProdaja"
+          TopLeft="160,52" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load data to FactProdaja">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="291,42"
+          Id="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey"
+          TopLeft="274.25,463.75" />
+        <NodeLayout
+          Size="287,42"
+          Id="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey"
+          TopLeft="273,163.75" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Load data to FactProdaja\OLE DB Source"
+          TopLeft="105,22" />
+        <NodeLayout
+          Size="287,42"
+          Id="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey"
+          TopLeft="273.75,389.25" />
+        <NodeLayout
+          Size="283,42"
+          Id="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey"
+          TopLeft="275,238.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load data to FactProdaja\OLE DB Destination"
+          TopLeft="121,621" />
+        <NodeLayout
+          Size="290,42"
+          Id="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey"
+          TopLeft="273.75,532.75" />
+        <NodeLayout
+          Size="297,42"
+          Id="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey"
+          TopLeft="266.785714285714,312.678571428571" />
+        <EdgeLayout
+          Id="Package\Load data to FactProdaja.Paths[OLE DB Source Output]"
+          TopLeft="180,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="236.5,99.75"
+              Start="0,0"
+              End="236.5,92.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.875" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.875"
+                    Point2="0,49.875"
+                    Point3="4,49.875" />
+                  <mssgle:LineSegment
+                    End="232.5,49.875" />
+                  <mssgle:CubicBezierSegment
+                    Point1="232.5,49.875"
+                    Point2="236.5,49.875"
+                    Point3="236.5,53.875" />
+                  <mssgle:LineSegment
+                    End="236.5,92.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to FactProdaja.Paths[Lookup Match Output5]"
+          TopLeft="418.75,574.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-212.25,46.25"
+              Start="0,0"
+              End="-212.25,38.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.125"
+                    Point2="0,23.125"
+                    Point3="-4,23.125" />
+                  <mssgle:LineSegment
+                    End="-208.25,23.125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-208.25,23.125"
+                    Point2="-212.25,23.125"
+                    Point3="-212.25,27.125" />
+                  <mssgle:LineSegment
+                    End="-212.25,38.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-154.31638671875,28.125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to FactProdaja.Paths[Lookup Match Output4]"
+          TopLeft="419.25,505.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,3.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to FactProdaja.Paths[Lookup Match Output3]"
+          TopLeft="418.5,431.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.5"
+              Start="0,0"
+              End="0,25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,6.6953125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to FactProdaja.Paths[Lookup Match Output2]"
+          TopLeft="416.267857142857,354.678571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.5714285714286"
+              Start="0,0"
+              End="0,27.0714285714286">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.0714285714286" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,7.73102678571428,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to FactProdaja.Paths[Lookup Match Output1]"
+          TopLeft="415.892857142857,280.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.1785714285714"
+              Start="0,0"
+              End="0,24.6785714285714">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.6785714285714" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,6.53459821428572,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to FactProdaja.Paths[Lookup Match Output]"
+          TopLeft="416.5,205.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.75"
+              Start="0,0"
+              End="0,25.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,6.8203125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to FactProdaja\return SkladisteKey based on SkladisteAltKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimSkladista]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to FactProdaja\return LokacijaKey instead of LokacijaAltKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimLokacije]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to FactProdaja\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to FactProdaja\return ProizvodKey based on ProizvodAltKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimProizvodi]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to FactProdaja\return KupacKey instead of KupacAltKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimKupci]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to FactProdaja\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to FactProdaja\return TrgovinaKey based on TrgovinaAltKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimTrgovine]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to FactProdaja\return ProdavacKey instead of ProdavacAltKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimProdavaci]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

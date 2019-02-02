@@ -1,0 +1,63 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/23/2019 8:20:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="USER-HP"
+  DTS:CreatorName="user-HP\GuestUser"
+  DTS:DTSID="{9CF258B0-5C72-47FE-9C23-EB352C9CC53B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="1050"
+  DTS:ObjectName="DimVrijeme_Load"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{50019492-F447-4853-BC7B-259E50C3BCBC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DatawareHouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DB17EB1E-A15B-4085-98AA-D353F59BA36C}"
+      DTS:ObjectName="LocalHost.DatawareHouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DatawareHouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables />
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <AnnotationLayout
+          Text="DECLARE @CurrentDate DATE = '1998-01-13'&#xA;DECLARE @EndDate DATE = '2020-01-13'&#xA;&#xA;WHILE @CurrentDate &lt; @EndDate&#xA;BEGIN&#xA;   INSERT INTO [dbo].DimVrijeme(&#xA;VrijemeKey,&#xA;Dan,&#xA;DanOpisno,&#xA;Mjesec,&#xA;MjesecOpisno,&#xA;Godina,&#xA;Datum&#xA;      )&#xA;   SELECT &#xA;    YEAR(@CurrentDate) * 10000 + MONTH(@CurrentDate) * 100 + DAY(@CurrentDate),&#xA;    Day = DAY(@CurrentDate),&#xA;    DATENAME(dw, @CurrentDate),&#xA; MONTH(@CurrentDate),&#xA; DATENAME(mm, @CurrentDate),&#xA; YEAR(@CurrentDate),&#xA; CONVERT(VARCHAR(10), @CurrentDate, 104)&#xA;      &#xA;&#xA;   SET @CurrentDate = DATEADD(DD, 1, @CurrentDate)&#xA;END"
+          ParentId="Package"
+          Size="466,369"
+          Id="ffa909f1-a044-4c3f-ba5a-5dfec2cc17fe"
+          TopLeft="48,108">
+          <AnnotationLayout.FontInfo>
+            <mssge:FontInfo
+              Color="#FF000000">
+              <mssge:FontInfo.TextDecorations>
+                <av:TextDecorationCollection />
+              </mssge:FontInfo.TextDecorations>
+            </mssge:FontInfo>
+          </AnnotationLayout.FontInfo>
+        </AnnotationLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

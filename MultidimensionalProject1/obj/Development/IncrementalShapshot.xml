@@ -1,0 +1,103 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>MultidimensionalProject1</Database>
+    <Server>localhost</Server>
+    <ConnectionString>Data Source=localhost;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>ot3l8ONxHDfWx+ilMhI88rX83WQ=26.1.2019. 16:40:1426.1.2019. 10:34:21</TimeStamp>
+        <ID>
+          <String>ComputerStoreDW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>RQ/KSI6a61H2NL6maT61IXy5wQE=26.1.2019. 10:43:3726.1.2019. 10:43:36</TimeStamp>
+        <ID>
+          <String>ComputerStoreDW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>zCUa8zfn7Zlb0yhkJkLDfh9RCFY=26.1.2019. 15:25:4226.1.2019. 11:07:57</TimeStamp>
+        <ID>
+          <String>Dim Proizvodi</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>evRqPeymVyx4h44whRXPRcZ0TQk=26.1.2019. 14:56:1126.1.2019. 11:07:57</TimeStamp>
+        <ID>
+          <String>Dim Vrijeme</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>ElP46H7dlEk+2XghQP6xzzJVj5A=26.1.2019. 14:42:2326.1.2019. 11:07:57</TimeStamp>
+        <ID>
+          <String>Dim Skladista</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>8VQiaAUMrTFAVytNM5+0nbHlEnA=26.1.2019. 14:56:1126.1.2019. 11:07:57</TimeStamp>
+        <ID>
+          <String>Dim Kupci</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>xuGdQ1kOY1ZNE4bfRKez8udrrCg=26.1.2019. 14:56:1126.1.2019. 11:07:57</TimeStamp>
+        <ID>
+          <String>Dim Prodavaci</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>qUiJEbVKQ7XRL8TcaAnzyNdUjy0=26.1.2019. 15:25:4226.1.2019. 11:07:57</TimeStamp>
+        <ID>
+          <String>Dim Lokacije</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>n0NmhtTwDoMaz5yBIfNbDsysGfA=26.1.2019. 14:56:1126.1.2019. 11:07:58</TimeStamp>
+        <ID>
+          <String>Dim Trgovine</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>DdzqQrXeKMQJ4+XHhvUWxkpdROc=26.1.2019. 15:25:4226.1.2019. 11:07:5784Rm4NrHOvz7lHNLqbaLwMN94s0=26.1.2019. 11:07:5826.1.2019. 11:07:57</TimeStamp>
+        <ID>
+          <String>ComputerStoreSales_Cube</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>PU3s4ye2rRFd9bpZzwO6IslEJg8=26.1.2019. 10:28:5126.1.2019. 10:28:34</TimeStamp>
+      <ID>
+        <String>MultidimensionalProject1</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2019-01-26T15:40:19.39Z</LastDeployed>
+</DeploymentSnapshot>
