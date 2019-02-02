@@ -1,0 +1,4 @@
+https://www.dropbox.com/s/wrkhdr9jfo2lf5q/ComputerStore.bak?dl=0 - database ComputerStore backup
+https://www.dropbox.com/s/90v5phdpevh0bi7/ComputerStoreSalesOLAP.abf?dl=0 - multidimensional model backup(cube)
+https://www.dropbox.com/s/frv7lspmzpcmfqr/DatawareHouse.bak?dl=0 - data warehouse backup
+https://www.dropbox.com/s/ibnrn0lmwpxngxf/TabularProject2.abf?dl=0  - tabular model backup
